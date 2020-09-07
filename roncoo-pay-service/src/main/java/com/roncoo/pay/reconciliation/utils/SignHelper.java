@@ -1,5 +1,9 @@
 package com.roncoo.pay.reconciliation.utils;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,10 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
  * 签名算法<br>
  * <br>
@@ -27,16 +27,18 @@ import org.apache.commons.logging.LogFactory;
  * 使用方式可参考: https://pay.weixin.qq.com/wiki/doc/api/jsapi_sl.php?chapter=4_3#<br>
  * <br>
  * 2015-12-21
+ *
  * @author 叶鹏
  */
 public class SignHelper {
 
-    private static final Log LOG = LogFactory.getLog(SignHelper.class);
-
     public static final String WX_SIGN_KEY = "key";
+    private static final Log LOG = LogFactory.getLog(SignHelper.class);
+    private static final String hexDigits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
     /**
      * 签名结果比较忽略大小写
+     *
      * @param map
      * @param keyValue
      * @param sign
@@ -48,6 +50,7 @@ public class SignHelper {
 
     /**
      * 签名结果比较忽略大小写
+     *
      * @param map
      * @param keyName
      * @param keyValue
@@ -66,6 +69,7 @@ public class SignHelper {
 
     /**
      * 返回签名的大写字符串
+     *
      * @param map
      * @param keyValue
      * @return
@@ -76,6 +80,7 @@ public class SignHelper {
 
     /**
      * 返回签名的大写字符串
+     *
      * @param map
      * @param keyValue
      * @param keyName
@@ -84,7 +89,7 @@ public class SignHelper {
     public static String getSign(Map<String, String> map, String keyName, String keyValue) {
         // 过滤空值
         HashMap<String, String> temp = new HashMap<String, String>();
-        for (Iterator<Entry<String, String>> it = map.entrySet().iterator(); it.hasNext();) {
+        for (Iterator<Entry<String, String>> it = map.entrySet().iterator(); it.hasNext(); ) {
             Entry<String, String> entry = it.next();
             if (StringUtils.isNotBlank(entry.getKey()) && StringUtils.isNotBlank(entry.getValue())) {
                 temp.put(entry.getKey(), entry.getValue());
@@ -150,7 +155,5 @@ public class SignHelper {
         int d2 = n % 16;
         return hexDigits[d1] + hexDigits[d2];
     }
-
-    private static final String hexDigits[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
 
 }

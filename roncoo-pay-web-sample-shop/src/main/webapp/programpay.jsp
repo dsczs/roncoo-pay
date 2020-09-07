@@ -22,7 +22,7 @@
     var paySign = "BAF449D858CFD0CE6D488146DEF41A64";
     var timeStamp = "1513219805815";
 
-    window.onload = function onBridgeReady(){
+    window.onload = function onBridgeReady() {
 
         wx.requestPayment({
             'timeStamp': "1395712654",
@@ -30,10 +30,10 @@
             'package': "prepay_id=u802345jgfjsdfgsdg888",
             'signType': "MD5",
             'paySign': "70EA570631E4BB79628FBCA90534C63FF7FADD89",
-            'success':function(res){
+            'success': function (res) {
                 resolve(res)
             },
-            'fail':function(res){
+            'fail': function (res) {
                 reject(res)
             }
         })

@@ -10,7 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class WeiXinPayUtil {
 
@@ -171,4 +176,4 @@ public class WeiXinPayUtil {
         logger.info("Map转Xml结果:{}", dataBuilder.toString());
         return dataBuilder.toString();
     }
-    }
+}

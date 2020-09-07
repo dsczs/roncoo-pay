@@ -1,13 +1,11 @@
 package com.roncoo.pay.trade.vo;
 
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
-
 /**
  * <b>功能说明:
  * </b>
  *
  * @author Peter
- *         <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
+ * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class F2FPayResultVo {
 
@@ -31,28 +29,44 @@ public class F2FPayResultVo {
      */
     private String payKey;
 
-    /** 产品名称 **/
+    /**
+     * 产品名称
+     **/
     private String productName;
 
-    /** 支付备注 **/
-    private String  remark;
+    /**
+     * 支付备注
+     **/
+    private String remark;
 
-    /** 下单Ip **/
+    /**
+     * 下单Ip
+     **/
     private String orderIp;
 
-    /** 备注字段1 **/
+    /**
+     * 备注字段1
+     **/
     private String field1;
 
-    /** 备注字段2 **/
+    /**
+     * 备注字段2
+     **/
     private String field2;
 
-    /** 备注字段3 **/
+    /**
+     * 备注字段3
+     **/
     private String field3;
 
-    /** 备注字段4 **/
+    /**
+     * 备注字段4
+     **/
     private String field4;
 
-    /** 备注字段5 **/
+    /**
+     * 备注字段5
+     **/
     private String field5;
 
     /**

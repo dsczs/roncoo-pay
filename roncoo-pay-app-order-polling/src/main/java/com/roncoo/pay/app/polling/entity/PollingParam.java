@@ -20,7 +20,8 @@ import java.util.Map;
 /**
  * <b>功能说明:
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class PollingParam {
@@ -53,6 +54,7 @@ public class PollingParam {
 
     /**
      * 最大通知次数限制.
+     *
      * @return
      */
     public Integer getMaxNotifyTimes() {

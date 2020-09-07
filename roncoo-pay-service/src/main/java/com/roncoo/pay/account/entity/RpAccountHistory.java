@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,68 +15,81 @@
  */
 package com.roncoo.pay.account.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-
 import com.roncoo.pay.account.enums.AccountFundDirectionEnum;
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * 账户历史信息
  * 龙果学院：www.roncoo.com
+ *
  * @author：zenghao
  */
 public class RpAccountHistory extends BaseEntity implements Serializable {
 
-	/** 账户编号 **/
-    private String accountNo;
-
-    /** 金额 **/
-    private BigDecimal amount;
-
-    /** 账户余额 **/
-    private BigDecimal balance;
-
-    /** 资金变动方向 **/
-    private String fundDirection;
-
-    /** 是否允许结算 **/
-    private String isAllowSett;
-
-    /** 是否完成结算 **/
-    private String isCompleteSett;
-
-    /** 请求号 **/
-    private String requestNo;
-
-    /** 银行流水号 **/
-    private String bankTrxNo;
-
-    /** 业务类型 **/
-    private String trxType;
-
-    /** 风险预存期 **/
-    private Integer riskDay;
-
-    /** 用户编号 **/
-    private String userNo;
-
     private static final long serialVersionUID = 1L;
-
-    /** 用户名 **/
+    /**
+     * 账户编号
+     **/
+    private String accountNo;
+    /**
+     * 金额
+     **/
+    private BigDecimal amount;
+    /**
+     * 账户余额
+     **/
+    private BigDecimal balance;
+    /**
+     * 资金变动方向
+     **/
+    private String fundDirection;
+    /**
+     * 是否允许结算
+     **/
+    private String isAllowSett;
+    /**
+     * 是否完成结算
+     **/
+    private String isCompleteSett;
+    /**
+     * 请求号
+     **/
+    private String requestNo;
+    /**
+     * 银行流水号
+     **/
+    private String bankTrxNo;
+    /**
+     * 业务类型
+     **/
+    private String trxType;
+    /**
+     * 风险预存期
+     **/
+    private Integer riskDay;
+    /**
+     * 用户编号
+     **/
+    private String userNo;
+    /**
+     * 用户名
+     **/
     private String userName;
 
     public String getUserName() {
-		return userName;
-	}
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public String getAccountNo() {
+    public String getAccountNo() {
         return accountNo;
     }
 
@@ -107,9 +120,9 @@ public class RpAccountHistory extends BaseEntity implements Serializable {
     public void setFundDirection(String fundDirection) {
         this.fundDirection = fundDirection;
     }
-    
+
     public String getFundDirectionDesc() {
-    	return AccountFundDirectionEnum.getEnum(this.getFundDirection()).getLabel();
+        return AccountFundDirectionEnum.getEnum(this.getFundDirection()).getLabel();
     }
 
     public String getIsAllowSett() {
@@ -151,9 +164,9 @@ public class RpAccountHistory extends BaseEntity implements Serializable {
     public void setTrxType(String trxType) {
         this.trxType = trxType == null ? null : trxType.trim();
     }
-    
+
     public String getTrxTypeDesc() {
-    	return TrxTypeEnum.getEnum(this.getTrxType()).getDesc();
+        return TrxTypeEnum.getEnum(this.getTrxType()).getDesc();
     }
 
     public Integer getRiskDay() {
@@ -171,16 +184,16 @@ public class RpAccountHistory extends BaseEntity implements Serializable {
     public void setUserNo(String userNo) {
         this.userNo = userNo == null ? null : userNo.trim();
     }
-    
+
     public String getAmountDesc() {
-    	if(this.getFundDirection().equals(AccountFundDirectionEnum.ADD.name())){
-    		return "<span style=\"color: blue;\">+"+this.amount.doubleValue()+"</span>";
-    	}else{
-    		return "<span style=\"color: red;\">-"+this.amount.doubleValue()+"</span>";
-    	}
+        if (this.getFundDirection().equals(AccountFundDirectionEnum.ADD.name())) {
+            return "<span style=\"color: blue;\">+" + this.amount.doubleValue() + "</span>";
+        } else {
+            return "<span style=\"color: red;\">-" + this.amount.doubleValue() + "</span>";
+        }
     }
-    
+
     public String getCreateTimeDesc() {
-    	return DateUtils.formatDate(this.getCreateTime(), "yyyy-MM-dd HH:mm:ss");
+        return DateUtils.formatDate(this.getCreateTime(), "yyyy-MM-dd HH:mm:ss");
     }
 }

@@ -28,24 +28,21 @@ import java.util.concurrent.DelayQueue;
 /**
  * <b>功能说明:消息APP启动类
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
-public class App 
-{
+public class App {
     private static final Log LOG = LogFactory.getLog(App.class);
 
     public static DelayQueue<PollingTask> tasks = new DelayQueue<PollingTask>();
-
-    private static ClassPathXmlApplicationContext context;
-
-    private static ThreadPoolTaskExecutor threadPool;
-
     public static PollingPersist pollingPersist;
+    private static ClassPathXmlApplicationContext context;
+    private static ThreadPoolTaskExecutor threadPool;
 
     public static void main(String[] args) {
         try {
-            context = new ClassPathXmlApplicationContext(new String[] { "spring/spring-context.xml" });
+            context = new ClassPathXmlApplicationContext(new String[]{"spring/spring-context.xml"});
             context.start();
             threadPool = (ThreadPoolTaskExecutor) context.getBean("threadPool");
             pollingPersist = (PollingPersist) context.getBean("pollingPersist");

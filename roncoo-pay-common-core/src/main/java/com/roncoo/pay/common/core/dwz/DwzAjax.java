@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,6 +17,7 @@ package com.roncoo.pay.common.core.dwz;
 
 /**
  * 封装DWZ框架ajax请求及响应的参数.
+ *
  * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
  */
 public class DwzAjax {
@@ -56,8 +57,7 @@ public class DwzAjax {
     }
 
     /**
-     * @param argStatusCode
-     *            the statusCode to set
+     * @param argStatusCode the statusCode to set
      */
     public final void setStatusCode(final String argStatusCode) {
         this.statusCode = argStatusCode;
@@ -71,8 +71,7 @@ public class DwzAjax {
     }
 
     /**
-     * @param argMessage
-     *            the message to set
+     * @param argMessage the message to set
      */
     public final void setMessage(final String argMessage) {
         this.message = argMessage;
@@ -86,8 +85,7 @@ public class DwzAjax {
     }
 
     /**
-     * @param argNavTabId
-     *            the navTabId to set
+     * @param argNavTabId the navTabId to set
      */
     public final void setNavTabId(final String argNavTabId) {
         this.navTabId = argNavTabId;
@@ -101,8 +99,7 @@ public class DwzAjax {
     }
 
     /**
-     * @param argCallbackType
-     *            the callbackType to set
+     * @param argCallbackType the callbackType to set
      */
     public final void setCallbackType(final String argCallbackType) {
         this.callbackType = argCallbackType;
@@ -116,8 +113,7 @@ public class DwzAjax {
     }
 
     /**
-     * @param argForwardUrl
-     *            the forwardUrl to set
+     * @param argForwardUrl the forwardUrl to set
      */
     public final void setForwardUrl(final String argForwardUrl) {
         this.forwardUrl = argForwardUrl;

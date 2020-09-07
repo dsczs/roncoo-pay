@@ -29,15 +29,13 @@ import java.util.Map;
 public class ProgramPayController extends BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProgramPayController.class);
-
+    private static final String CONTENT_TYPE = "text/text;charset=UTF-8";
     @Autowired
     private RpTradePaymentManagerService tradePaymentManagerService;
     @Autowired
     private RpUserPayConfigService userPayConfigService;
     @Autowired
     private CnpPayService cnpPayService;
-
-    private static final String CONTENT_TYPE = "text/text;charset=UTF-8";
 
     @RequestMapping("/doPay")
     public void initPay(HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {

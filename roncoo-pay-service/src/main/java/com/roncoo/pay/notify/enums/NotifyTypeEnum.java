@@ -25,18 +25,12 @@ public enum NotifyTypeEnum {
     WEPAY_SEARCH("微信刷卡支付轮询");
 
 
-    /** 描述 */
+    /**
+     * 描述
+     */
     private String desc;
 
     private NotifyTypeEnum(String desc) {
-        this.desc = desc;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -52,7 +46,7 @@ public enum NotifyTypeEnum {
         return enumMap;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static List toList() {
         NotifyTypeEnum[] ary = NotifyTypeEnum.values();
         List list = new ArrayList();
@@ -90,6 +84,14 @@ public enum NotifyTypeEnum {
         }
         jsonStr.append("]");
         return jsonStr.toString();
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
 }

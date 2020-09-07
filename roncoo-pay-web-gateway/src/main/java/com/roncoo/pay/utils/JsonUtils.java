@@ -19,17 +19,16 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import javax.json.Json;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * <b>功能说明:JsonUtils工具类,用来通过流的方式将Json数据写回前端
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class JsonUtils {
@@ -39,25 +38,27 @@ public class JsonUtils {
     /**
      * 构造函数私有化
      */
-    private JsonUtils (){}
+    private JsonUtils() {
+    }
 
     /**
      * 将请求中的Json流转换成Json对象
+     *
      * @param httpServletRequest
      * @return
      */
-    public static JSONObject requestJson(HttpServletRequest httpServletRequest){
+    public static JSONObject requestJson(HttpServletRequest httpServletRequest) {
         StringBuffer buffer = new StringBuffer();
         String line = null;
         JSONObject jsonObject = null;
         try {
             BufferedReader reader = httpServletRequest.getReader();
-            while((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 buffer.append(line);
             }
             reader.close();
             jsonObject = JSONObject.parseObject(buffer.toString());
-        } catch(Exception e) {
+        } catch (Exception e) {
             LOG.error(e);
         }
         return jsonObject;
@@ -66,6 +67,7 @@ public class JsonUtils {
 
     /**
      * 将Map内的参数,转换成Json实体,并写出
+     *
      * @param response
      * @param object
      * @throws IOException

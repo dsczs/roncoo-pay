@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@include file="../../common/taglib/taglib.jsp" %>
 <link href="${baseURL }/dwz/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="${baseURL }/dwz/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="${baseURL }/dwz/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 <link href="${baseURL }/dwz/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
 
- <!--[if IE]>
+<!--[if IE]>
 <link href="dwz/themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
 <![endif]-->
 
@@ -58,18 +58,23 @@
 <script src="${baseURL }/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-$(function(){
-	DWZ.init("${baseURL }/dwz/dwz.frag.xml", {
-		loginUrl:"${baseURL }/login", loginTitle:"登录",	// 弹出登录对话框
-		statusCode:{ok:200, error:300, timeout:301}, //【可选】
-		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
-		debug:false,	// 调试模式 【true|false】
-		callback:function(){
-			initEnv();
-			$("#themeList").theme({themeBase:"${baseURL }/dwz/themes"}); // themeBase 相对于index页面的主题base路径
-			//setTimeout(function() {$("#sidebar .toggleCollapse div").trigger("click");}, 10);//index页面初始化时隐藏左边菜单.
-		}
-	});
-});
+    $(function () {
+        DWZ.init("${baseURL }/dwz/dwz.frag.xml", {
+            loginUrl: "${baseURL }/login", loginTitle: "登录",	// 弹出登录对话框
+            statusCode: {ok: 200, error: 300, timeout: 301}, //【可选】
+            pageInfo: {
+                pageNum: "pageNum",
+                numPerPage: "numPerPage",
+                orderField: "orderField",
+                orderDirection: "orderDirection"
+            }, //【可选】
+            debug: false,	// 调试模式 【true|false】
+            callback: function () {
+                initEnv();
+                $("#themeList").theme({themeBase: "${baseURL }/dwz/themes"}); // themeBase 相对于index页面的主题base路径
+                //setTimeout(function() {$("#sidebar .toggleCollapse div").trigger("click");}, 10);//index页面初始化时隐藏左边菜单.
+            }
+        });
+    });
 
 </script>

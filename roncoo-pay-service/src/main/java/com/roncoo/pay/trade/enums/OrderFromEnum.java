@@ -22,25 +22,20 @@ import java.util.Map;
 
 /**
  * <b>功能说明:订单来源枚举类</b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public enum OrderFromEnum {
 
     USER_EXPENSE("用户消费");
 
-    /** 描述 */
+    /**
+     * 描述
+     */
     private String desc;
 
     private OrderFromEnum(String desc) {
-        this.desc = desc;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -56,7 +51,7 @@ public enum OrderFromEnum {
         return enumMap;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static List toList() {
         OrderFromEnum[] ary = OrderFromEnum.values();
         List list = new ArrayList();
@@ -94,5 +89,13 @@ public enum OrderFromEnum {
         }
         jsonStr.append("]");
         return jsonStr.toString();
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

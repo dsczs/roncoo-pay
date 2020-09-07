@@ -17,12 +17,17 @@ package com.roncoo.utils;
 
 import org.apache.commons.lang.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * <b>功能说明:商户API工具类
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class MerchantApiUtil {
@@ -30,16 +35,17 @@ public class MerchantApiUtil {
 
     /**
      * 获取参数签名
+     *
      * @param paramMap  签名参数
      * @param paySecret 签名密钥
      * @return
      */
-    public static String  getSign (Map<String , Object> paramMap , String paySecret){
+    public static String getSign(Map<String, Object> paramMap, String paySecret) {
         SortedMap<String, Object> smap = new TreeMap<String, Object>(paramMap);
         StringBuffer stringBuffer = new StringBuffer();
         for (Map.Entry<String, Object> m : smap.entrySet()) {
             Object value = m.getValue();
-            if (value != null && StringUtils.isNotBlank(String.valueOf(value))){
+            if (value != null && StringUtils.isNotBlank(String.valueOf(value))) {
                 stringBuffer.append(m.getKey()).append("=").append(m.getValue()).append("&");
             }
         }
@@ -53,15 +59,16 @@ public class MerchantApiUtil {
 
     /**
      * 获取参数拼接串
+     *
      * @param paramMap
      * @return
      */
-    public static String  getParamStr(Map<String , Object> paramMap){
+    public static String getParamStr(Map<String, Object> paramMap) {
         SortedMap<String, Object> smap = new TreeMap<String, Object>(paramMap);
         StringBuffer stringBuffer = new StringBuffer();
         for (Map.Entry<String, Object> m : smap.entrySet()) {
             Object value = m.getValue();
-            if (value != null && StringUtils.isNotBlank(String.valueOf(value))){
+            if (value != null && StringUtils.isNotBlank(String.valueOf(value))) {
                 stringBuffer.append(m.getKey()).append("=").append(value).append("&");
             }
         }
@@ -73,33 +80,35 @@ public class MerchantApiUtil {
 
     /**
      * 验证商户签名
+     *
      * @param paramMap  签名参数
      * @param paySecret 签名私钥
      * @param signStr   原始签名密文
      * @return
      */
-    public static boolean isRightSign(Map<String , Object> paramMap , String paySecret ,String signStr){
+    public static boolean isRightSign(Map<String, Object> paramMap, String paySecret, String signStr) {
 
-        if (StringUtils.isBlank(signStr)){
+        if (StringUtils.isBlank(signStr)) {
             return false;
         }
 
         String sign = getSign(paramMap, paySecret);
-        if(signStr.equals(sign)){
+        if (signStr.equals(sign)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     /**
      * 建立请求，以表单HTML形式构造（默认）
-     * @param sParaTemp 请求参数数组
-     * @param strMethod 提交方式。两个值可选：post、get
+     *
+     * @param sParaTemp     请求参数数组
+     * @param strMethod     提交方式。两个值可选：post、get
      * @param strButtonName 确认按钮显示文字
      * @return 提交表单HTML文本
      */
-    public static String buildRequest(Map<String, Object> sParaTemp, String strMethod, String strButtonName , String actionUrl) {
+    public static String buildRequest(Map<String, Object> sParaTemp, String strMethod, String strButtonName, String actionUrl) {
         //待请求参数数组
         List<String> keys = new ArrayList<String>(sParaTemp.keySet());
         StringBuffer sbHtml = new StringBuffer();
@@ -112,7 +121,7 @@ public class MerchantApiUtil {
             Object object = sParaTemp.get(name);
             String value = "";
 
-            if (object != null){
+            if (object != null) {
                 value = (String) sParaTemp.get(name);
             }
 

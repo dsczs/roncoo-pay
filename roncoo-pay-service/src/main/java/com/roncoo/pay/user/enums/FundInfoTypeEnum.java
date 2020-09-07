@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,25 +23,20 @@ import java.util.Map;
 /**
  * 资金流入类型
  * 龙果学院：www.roncoo.com
+ *
  * @author：Peter
  */
 public enum FundInfoTypeEnum {
 
-	 PLAT_RECEIVES("平台收款"),
-	 MERCHANT_RECEIVES("商家收款");
+    PLAT_RECEIVES("平台收款"),
+    MERCHANT_RECEIVES("商家收款");
 
-    /** 描述 */
+    /**
+     * 描述
+     */
     private String desc;
 
     private FundInfoTypeEnum(String desc) {
-        this.desc = desc;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -57,7 +52,7 @@ public enum FundInfoTypeEnum {
         return enumMap;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static List toList() {
         FundInfoTypeEnum[] ary = FundInfoTypeEnum.values();
         List list = new ArrayList();
@@ -96,5 +91,13 @@ public enum FundInfoTypeEnum {
         }
         jsonStr.append("]");
         return jsonStr.toString();
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

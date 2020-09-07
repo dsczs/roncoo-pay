@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,16 +14,6 @@
  * limitations under the License.
  */
 package com.roncoo.pay.user.service.impl;
-
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.account.service.RpAccountService;
@@ -36,55 +26,62 @@ import com.roncoo.pay.user.dao.RpUserInfoDao;
 import com.roncoo.pay.user.entity.RpUserInfo;
 import com.roncoo.pay.user.service.BuildNoService;
 import com.roncoo.pay.user.service.RpUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户信息service实现类
  * 龙果学院：www.roncoo.com
+ *
  * @author：zenghao
  */
 @Service("rpUserInfoService")
-public class RpUserInfoServiceImpl implements RpUserInfoService{
+public class RpUserInfoServiceImpl implements RpUserInfoService {
 
-	@Autowired
-	private RpUserInfoDao rpUserInfoDao;
-	
-	@Autowired
-	private BuildNoService buildNoService;
-	
-	@Autowired
-	private RpAccountService rpAccountService;
-	
-	@Override
-	public void saveData(RpUserInfo rpUserInfo) {
-		rpUserInfoDao.insert(rpUserInfo);
-	}
+    @Autowired
+    private RpUserInfoDao rpUserInfoDao;
 
-	@Override
-	public void updateData(RpUserInfo rpUserInfo) {
-		rpUserInfoDao.update(rpUserInfo);
-	}
+    @Autowired
+    private BuildNoService buildNoService;
 
-	@Override
-	public RpUserInfo getDataById(String id) {
-		return rpUserInfoDao.getById(id);
-	}
+    @Autowired
+    private RpAccountService rpAccountService;
 
-	@Override
-	public PageBean listPage(PageParam pageParam, RpUserInfo rpUserInfo) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("userNo", rpUserInfo.getUserNo());
-		return rpUserInfoDao.listPage(pageParam, paramMap);
-	}
-	
+    @Override
+    public void saveData(RpUserInfo rpUserInfo) {
+        rpUserInfoDao.insert(rpUserInfo);
+    }
+
+    @Override
+    public void updateData(RpUserInfo rpUserInfo) {
+        rpUserInfoDao.update(rpUserInfo);
+    }
+
+    @Override
+    public RpUserInfo getDataById(String id) {
+        return rpUserInfoDao.getById(id);
+    }
+
+    @Override
+    public PageBean listPage(PageParam pageParam, RpUserInfo rpUserInfo) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userNo", rpUserInfo.getUserNo());
+        return rpUserInfoDao.listPage(pageParam, paramMap);
+    }
+
     /**
      * 用户线下注册
-     * 
-     * @param userName
-     *            用户名
-     * @param mobile
-     *            手机号
-     * @param password
-     *            密码
+     *
+     * @param userName 用户名
+     * @param mobile   手机号
+     * @param password 密码
      * @return
      */
     @Override
@@ -136,32 +133,34 @@ public class RpUserInfoServiceImpl implements RpUserInfoService{
     @Override
     public RpUserInfo getDataByMerchentNo(String merchantNo) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("userNo", merchantNo);
-		paramMap.put("status", PublicStatusEnum.ACTIVE.name());
-		return rpUserInfoDao.getBy(paramMap);
+        paramMap.put("userNo", merchantNo);
+        paramMap.put("status", PublicStatusEnum.ACTIVE.name());
+        return rpUserInfoDao.getBy(paramMap);
     }
-    
+
     /**
-	 * 根据手机号获取商户信息
-	 * @param mobile
-	 * @return
-	 */
+     * 根据手机号获取商户信息
+     *
+     * @param mobile
+     * @return
+     */
     @Override
-    public RpUserInfo getDataByMobile(String mobile){
-    	Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("mobile", mobile);
-		paramMap.put("status", PublicStatusEnum.ACTIVE.name());
-		return rpUserInfoDao.getBy(paramMap);
+    public RpUserInfo getDataByMobile(String mobile) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("mobile", mobile);
+        paramMap.put("status", PublicStatusEnum.ACTIVE.name());
+        return rpUserInfoDao.getBy(paramMap);
     }
-    
+
     /**
-	 * 获取所有用户
-	 * @return
-	 */
+     * 获取所有用户
+     *
+     * @return
+     */
     @Override
-    public List<RpUserInfo> listAll(){
-    	Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("status", PublicStatusEnum.ACTIVE.name());
-		return rpUserInfoDao.listBy(paramMap);
-	}
+    public List<RpUserInfo> listAll() {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("status", PublicStatusEnum.ACTIVE.name());
+        return rpUserInfoDao.listBy(paramMap);
+    }
 }

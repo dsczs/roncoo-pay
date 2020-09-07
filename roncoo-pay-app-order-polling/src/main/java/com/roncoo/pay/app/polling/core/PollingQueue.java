@@ -16,21 +16,21 @@
 package com.roncoo.pay.app.polling.core;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
+import com.roncoo.pay.app.polling.App;
+import com.roncoo.pay.common.core.utils.DateUtils;
+import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 
-import com.roncoo.pay.app.polling.App;
-import com.roncoo.pay.common.core.utils.DateUtils;
-import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <b>功能说明:
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Component
@@ -45,6 +45,7 @@ public class PollingQueue implements Serializable {
 
     /**
      * 将传过来的对象进行通知次数判断，决定是否放在任务队列中.<br/>
+     *
      * @param rpOrderResultQueryVo
      * @throws Exception
      */
@@ -58,7 +59,7 @@ public class PollingQueue implements Serializable {
 
         if (rpOrderResultQueryVo.getNotifyTimes().intValue() == 0) {
             rpOrderResultQueryVo.setLastNotifyTime(new Date()); // 第一次发送(取当前时间)
-        }else{
+        } else {
             rpOrderResultQueryVo.setLastNotifyTime(rpOrderResultQueryVo.getEditTime()); // 非第一次发送（取上一次修改时间，也是上一次发送时间）
         }
 

@@ -34,31 +34,17 @@ import java.util.Properties;
  */
 public class AlipayConfigUtil {
 
+    // 防钓鱼时间戳  若要使用请调用类文件submit中的query_timestamp函数
+    public static final String anti_phishing_key = "";
+    // 客户端的IP地址 非局域网的外网IP地址，如：221.0.0.1
+    public static final String exter_invoke_ip = "";
     private static final Log LOG = LogFactory.getLog(AlipayConfigUtil.class);
-
     /**
      * 通过静态代码块读取上传文件的验证格式配置文件,静态代码块只执行一次(单例)
      */
     private static Properties properties = new Properties();
 
-    /**
-     * 私有构造方法
-     **/
-    private AlipayConfigUtil() {
-    }
-
-    static {
-        try {
-            // 从类路径下读取属性文件
-            properties.load(AlipayConfigUtil.class.getClassLoader()
-                    .getResourceAsStream("alipay_config.properties"));
-        } catch (IOException e) {
-            LOG.error(e);
-        }
-    }
-
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
     // 合作身份者ID，签约账号，以2088开头由16位纯数字组成的字符串，查看地址：https://b.alipay.com/order/pidAndKey.htm
     public static final String partner = (String) properties.get("partner");
 
@@ -109,11 +95,21 @@ public class AlipayConfigUtil {
 
 //↓↓↓↓↓↓↓↓↓↓ 请在这里配置防钓鱼信息，如果没开通防钓鱼功能，为空即可 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
-    // 防钓鱼时间戳  若要使用请调用类文件submit中的query_timestamp函数
-    public static final String anti_phishing_key = "";
+    static {
+        try {
+            // 从类路径下读取属性文件
+            properties.load(AlipayConfigUtil.class.getClassLoader()
+                    .getResourceAsStream("alipay_config.properties"));
+        } catch (IOException e) {
+            LOG.error(e);
+        }
+    }
 
-    // 客户端的IP地址 非局域网的外网IP地址，如：221.0.0.1
-    public static final String exter_invoke_ip = "";
+    /**
+     * 私有构造方法
+     **/
+    private AlipayConfigUtil() {
+    }
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置防钓鱼信息，如果没开通防钓鱼功能，为空即可 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 

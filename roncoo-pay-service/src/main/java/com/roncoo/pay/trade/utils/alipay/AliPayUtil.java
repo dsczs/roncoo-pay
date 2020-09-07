@@ -25,7 +25,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class AliPayUtil {
 
@@ -172,7 +177,7 @@ public class AliPayUtil {
             if (resultSign.equals(sign)) {
                 Map<String, Object> resultMap = new HashMap<>();
                 resultMap.putAll(responseMap);
-                resultMap.put("is_success",document.getRootElement().element("is_success").getText());
+                resultMap.put("is_success", document.getRootElement().element("is_success").getText());
                 return resultMap;
             } else {
                 logger.info("支付宝--订单查询验签不通过:{},返回签名:[{}],返回报文签名:[{}]", sign, resultSign);

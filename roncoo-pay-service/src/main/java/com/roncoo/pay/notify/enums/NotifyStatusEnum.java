@@ -14,25 +14,19 @@ import java.util.Map;
  */
 public enum NotifyStatusEnum {
 
-	CREATED("通知记录已创建"),
+    CREATED("通知记录已创建"),
     SUCCESS("通知成功"),
     FAILED("通知失败"),
     HTTP_REQUEST_SUCCESS("http请求响应成功"),
     HTTP_REQUEST_FALIED("http请求失败");
 
 
-    /** 描述 */
+    /**
+     * 描述
+     */
     private String desc;
 
     private NotifyStatusEnum(String desc) {
-        this.desc = desc;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -48,7 +42,7 @@ public enum NotifyStatusEnum {
         return enumMap;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static List toList() {
         NotifyStatusEnum[] ary = NotifyStatusEnum.values();
         List list = new ArrayList();
@@ -86,5 +80,13 @@ public enum NotifyStatusEnum {
         }
         jsonStr.append("]");
         return jsonStr.toString();
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

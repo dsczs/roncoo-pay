@@ -29,7 +29,7 @@
         var trxNo = "${result.trxNo}";
         if (trxNo == null || trxNo == "") {
             $("#wait").attr("src", "${path}/images/err.png");
-            $("#payMsg").text("订单["+result.bankOrderNo+"]，订单号能为空!");
+            $("#payMsg").text("订单[" + result.bankOrderNo + "]，订单号能为空!");
             clearInterval(queryObj);
             return;
         }
@@ -47,12 +47,12 @@
                         isOver = true;
                         clearInterval(queryObj);
                         $("#wait").attr("src", "${path}/images/chenggong.png");
-                        $("#payMsg").text("订单["+result.bankOrderNo+"]，支付成功!");
-                    }else if("FAILED" == result.status){
+                        $("#payMsg").text("订单[" + result.bankOrderNo + "]，支付成功!");
+                    } else if ("FAILED" == result.status) {
                         isOver = true;
                         clearInterval(queryObj);
                         $("#wait").attr("src", "${path}/images/err.png");
-                        $("#payMsg").text("订单["+result.bankOrderNo+"]，支付失败!");
+                        $("#payMsg").text("订单[" + result.bankOrderNo + "]，支付失败!");
                     }
                 }
             },

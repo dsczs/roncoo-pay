@@ -5,29 +5,36 @@ package com.roncoo.pay.trade.entity;
  * </b>
  *
  * @author Peter
- *         <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
+ * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class RoncooPayGoodsDetails {
 
-    /** 构造函数 传入所需参数 **/
-    public RoncooPayGoodsDetails (String goodsId , String goodsName ,Long singlePrice , Integer nums){
+    /**
+     * 商品ID
+     **/
+    private String goodsId;
+    /**
+     * 名称
+     **/
+    private String goodsName;
+    /**
+     * 单价
+     **/
+    private Long singlePrice;
+    /**
+     * 数量
+     **/
+    private Integer nums;
+
+    /**
+     * 构造函数 传入所需参数
+     **/
+    public RoncooPayGoodsDetails(String goodsId, String goodsName, Long singlePrice, Integer nums) {
         this.goodsId = goodsId;
         this.goodsName = goodsName;
         this.singlePrice = singlePrice;
         this.nums = nums;
     }
-
-    /** 商品ID **/
-    private String goodsId;
-
-    /** 名称 **/
-    private String goodsName;
-
-    /** 单价 **/
-    private Long singlePrice;
-
-    /** 数量 **/
-    private Integer nums;
 
     public String getGoodsId() {
         return goodsId;

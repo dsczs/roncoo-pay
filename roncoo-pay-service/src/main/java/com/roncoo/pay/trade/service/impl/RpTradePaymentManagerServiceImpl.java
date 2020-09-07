@@ -45,14 +45,22 @@ import com.roncoo.pay.trade.utils.alipay.config.AlipayConfigUtil;
 import com.roncoo.pay.trade.utils.alipay.util.AlipayNotify;
 import com.roncoo.pay.trade.utils.alipay.util.AlipaySubmit;
 import com.roncoo.pay.trade.utils.weixin.WeiXinPayUtil;
-import com.roncoo.pay.trade.vo.*;
+import com.roncoo.pay.trade.vo.F2FPayResultVo;
+import com.roncoo.pay.trade.vo.OrderPayResultVo;
+import com.roncoo.pay.trade.vo.ProgramPayResultVo;
+import com.roncoo.pay.trade.vo.RpPayGateWayPageShowVo;
+import com.roncoo.pay.trade.vo.ScanPayResultVo;
 import com.roncoo.pay.user.entity.RpPayWay;
 import com.roncoo.pay.user.entity.RpUserInfo;
 import com.roncoo.pay.user.entity.RpUserPayConfig;
 import com.roncoo.pay.user.entity.RpUserPayInfo;
 import com.roncoo.pay.user.enums.FundInfoTypeEnum;
 import com.roncoo.pay.user.exception.UserBizException;
-import com.roncoo.pay.user.service.*;
+import com.roncoo.pay.user.service.BuildNoService;
+import com.roncoo.pay.user.service.RpPayWayService;
+import com.roncoo.pay.user.service.RpUserInfoService;
+import com.roncoo.pay.user.service.RpUserPayConfigService;
+import com.roncoo.pay.user.service.RpUserPayInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +68,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * <b>功能说明:交易模块管理实现类实现</b>
@@ -1135,8 +1148,8 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         if (PayWayEnum.WEIXIN.name().equals(payWayCode)) {
             payType = PayTypeEnum.WX_PROGRAM_PAY;
             payWay = rpPayWayService.getByPayWayTypeCode(rpUserPayConfig.getProductCode(), payWayCode, payType.name());
-        }else{
-            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR , "暂不支持此支付方式");
+        } else {
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "暂不支持此支付方式");
         }
         if (payWay == null) {
             throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
@@ -1183,7 +1196,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
             payType = PayTypeEnum.WX_PROGRAM_PAY;
         } else if (PayWayEnum.ALIPAY.name().equals(payWay.getPayWayCode())) {
             // TODO 支付宝小程序支付，需要自定义枚举
-            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR , "暂不支持此支付方式");
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "暂不支持此支付方式");
         }
 
         tradePaymentOrder.setPayTypeCode(payType.name());// 支付类型
@@ -1231,7 +1244,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
                 }
             }
         } else if (PayWayEnum.ALIPAY.name().equals(payWayCode)) {// 支付宝支付
-            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR , "暂不支持此支付方式");
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "暂不支持此支付方式");
         }
 
         Map<String, Object> paramMap = new HashMap<>();
